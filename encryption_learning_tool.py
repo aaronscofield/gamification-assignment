@@ -16,10 +16,12 @@ c, addr = s.accept()
 print("Accepted connection from ", addr)
 
 
+# converts input to a string and sends message to the user's console
 def send_message(message):
     c.send(str.encode(message))
 
 
+# introduces encryption, provides historical context, and prompts the example
 def welcome_message():
     sleep(2)
     send_message("\nHi, this is the server, and welcome to a quick tutorial about encryption!\n\n")
@@ -34,6 +36,7 @@ def welcome_message():
     sleep(6)
 
 
+# generates the randomized 8 letter DES key and writes it to a file
 def genDESKey():
     f = open("DESkey.txt", "w")
     letters = string.ascii_letters
@@ -41,12 +44,13 @@ def genDESKey():
     f.close()
 
 
+# prompts the user to enter a word, uses regex to make it readable,
+# then encrypts the word with the previously generated DES key from file.
+# the function then outputs this encrypted word to the user's console and returns it
 def example():
     send_message("\nFor this quick example of encryption, I'll need you to type a word. Any word!\n")
     send_message("Enter it here: ")
     word_received = c.recv(1024)
-
-    # print(word_received)
 
     # clean up input with regex
     word_received = re.sub(r'[b\'(.*?)\\r\\n\']', '', str(word_received))
@@ -74,6 +78,8 @@ def example():
         return encrypted_word
 
 
+# introduces the concept of encryption keys, outputs the key used to encrypt the user's word
+# decrypts the message, and outputs the original word.
 def key_discussion(ciphertext):
     send_message("\"But computer,\" you say, \"how could someone decode that message?\"\n\n")
     sleep(7)
@@ -101,6 +107,7 @@ def key_discussion(ciphertext):
     sleep(7)
 
 
+# concludes the program
 def conclusion():
     send_message("There are hundreds of different encryption algorithms, \n")
     send_message("and some are more secure than others! \n\n")
@@ -109,6 +116,7 @@ def conclusion():
     send_message("may your encryption be secure and your passwords be safe!\n\n")
 
 
+# main function, calls each function in turn then quits
 def main():
     welcome_message()
     returned_encryption = example()
