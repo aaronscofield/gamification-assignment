@@ -1,6 +1,6 @@
-Aaron Scofield\n
-CIS3605
-Dr. Giraldo
+Aaron Scofield -
+CIS3605 - 
+Dr. Giraldo - 
 04/07/2021
 
 A gamification assignment created for the CIS3605 course completed at Temple University.
